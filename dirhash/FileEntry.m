@@ -12,6 +12,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include "version.h"
+#include "sha512.h"
 
 @implementation FileEntry
 
@@ -37,16 +38,19 @@
 
 - (NSDictionary *)processEntry
 {
-    struct stat filestat;
-    uint32_t  fileLength;
-    void    *fileData;
+    struct stat   filestat;
+    void         *fileData;
+    uint8_t       hash[CC_SHA512_DIGEST_LENGTH]; /* this hash is calculated via CC_SHA512 */
+    uint8_t       hash2[SHA512_DIGEST_LENGTH];   /* this hash is calculated via included sha512 */
+
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     dict[@"path"] = relativePath;
     int res = stat(absolutePath.UTF8String, &filestat);
     if(res!=0)
     {
-        dict[@"stat_error"] = [NSNumber numberWithLongLong:(long long)errno];
+        dict[@"error_cmd"] = @"stat";
+        dict[@"error_errno"] = [NSNumber numberWithLongLong:(long long)errno];
         return dict;
     }
     dict[@"dev"]        = [NSNumber numberWithLongLong:(long long)filestat.st_dev];
@@ -75,32 +79,44 @@
 
     if(filestat.st_size > 0xFFFFFFFFLL) /* the SHA functions only work with up to uint32_t size */
     {
-        dict[@"error"] = @"File is larger than 4G";
-        return dict;
+        dict[@"warning"] = @"File is larger than 4G";
     }
 
     int fd = open(absolutePath.UTF8String, O_RDONLY);
     if (fd == -1)
     {
-        dict[@"open_error"] = [NSNumber numberWithLongLong:(long long)errno];
+        dict[@"error_cmd"] = @"open";
+        dict[@"error_errno"] = [NSNumber numberWithLongLong:(long long)errno];
         return dict;
     }
     
-
-    fileLength = (uint32_t)filestat.st_size;
+    size_t fileLength = filestat.st_size;
     fileData = mmap((caddr_t)0, fileLength, PROT_READ, MAP_SHARED, fd, 0);
     if (fileData ==  (caddr_t)(-1))
     {
-        dict[@"mmap_error"] = [NSNumber numberWithLongLong:(long long)errno];
+        dict[@"error_cmd"] = @"mmap";
+        dict[@"error_errno"] = [NSNumber numberWithLongLong:(long long)errno];
         close(fd);
         return dict;
     }
-    
-    unsigned char hash[CC_SHA512_DIGEST_LENGTH];
-    if (CC_SHA512(fileData,fileLength, hash))
+    sha512(fileData,fileLength, hash2);
+    if(filestat.st_size > 0xFFFFFFFFLL) /* the SHA macro only work with up to uint32_t size */
     {
-        dict[@"sha512"]  = [NSData dataWithBytes:hash length:CC_SHA512_DIGEST_LENGTH];
+        dict[@"sha512"]  = [NSData dataWithBytes:hash2 length:SHA512_DIGEST_LENGTH];
     }
+    else
+    {
+        if (CC_SHA512(fileData,(unsigned int)fileLength, hash))
+        {
+            dict[@"sha512"]  = [NSData dataWithBytes:hash length:CC_SHA512_DIGEST_LENGTH];
+        }
+        if(memcmp(hash,hash2,SHA512_DIGEST_LENGTH)!=0)
+        {
+            fprintf(stderr,"CC_SHA512 does not match sha512 hash");
+            dict[@"sha512b"]  = [NSData dataWithBytes:hash2 length:SHA512_DIGEST_LENGTH];
+        }
+    }
+    munmap(fileData, fileLength);
     close(fd);
     return dict;
 }
