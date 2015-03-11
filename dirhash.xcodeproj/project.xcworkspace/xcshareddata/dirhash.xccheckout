@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FB7110FA-BFB0-422B-8AC5-EC0958CBDF73</string>
+	<key>IDESourceControlProjectName</key>
+	<string>dirhash</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>57D6EBD13AAA6979F95576D9F6B889E297D66F97</key>
+		<string>ssh://metropolis.fink.org/git/dirhash.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>dirhash.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>57D6EBD13AAA6979F95576D9F6B889E297D66F97</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://metropolis.fink.org/git/dirhash.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>57D6EBD13AAA6979F95576D9F6B889E297D66F97</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>57D6EBD13AAA6979F95576D9F6B889E297D66F97</string>
+			<key>IDESourceControlWCCName</key>
+			<string>dirhash</string>
+		</dict>
+	</array>
+</dict>
+</plist>
