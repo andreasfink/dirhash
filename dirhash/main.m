@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <time.h>
 #import "FileEntry.h"
+#include "version.h"
 
 int main(int argc, const char *argv[])
 {
@@ -53,7 +54,7 @@ int main(int argc, const char *argv[])
         }
 
         NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-
+        NSMutableDictionary *filedata = [[NSMutableDictionary alloc]init];
         for(NSString *root in pathsToCheck)
         {
             fprintf(stderr,"Scanning path %s:\n",root.UTF8String);
@@ -71,8 +72,11 @@ int main(int argc, const char *argv[])
                 fprintf(stderr," %s/\n",e.relativePath.UTF8String);
                 [allFileInfos addObject:[e processEntry]];
             }
-            dict[root] = allFileInfos;
+            filedata[root] = allFileInfos;
+            
         }
+        dict[@"version"] = @(VERSION);
+        dict[@"filedata"] = filedata;
         [dict writeToFile:@(outputfilename) atomically:YES];
     }
     return 0;

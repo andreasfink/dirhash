@@ -10,14 +10,14 @@
 	<string>dirhash</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>57D6EBD13AAA6979F95576D9F6B889E297D66F97</key>
+		<key>CDF302A8E9CA97853BEB264BC0E0A5A4D1D1842C</key>
 		<string>ssh://metropolis.fink.org/git/dirhash.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>dirhash.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>57D6EBD13AAA6979F95576D9F6B889E297D66F97</key>
+		<key>CDF302A8E9CA97853BEB264BC0E0A5A4D1D1842C</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>57D6EBD13AAA6979F95576D9F6B889E297D66F97</string>
+	<string>CDF302A8E9CA97853BEB264BC0E0A5A4D1D1842C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>57D6EBD13AAA6979F95576D9F6B889E297D66F97</string>
+			<string>CDF302A8E9CA97853BEB264BC0E0A5A4D1D1842C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>dirhash</string>
 		</dict>

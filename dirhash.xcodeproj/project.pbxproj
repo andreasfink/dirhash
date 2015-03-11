@@ -28,6 +28,7 @@
 		A6F1980E1AB01C070090FC94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6F198151AB01CD80090FC94 /* FileEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntry.h; sourceTree = "<group>"; };
 		A6F198161AB01CD80090FC94 /* FileEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntry.m; sourceTree = "<group>"; };
+		A6F198211AB0A1670090FC94 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 		A6F198021AB01C070090FC94 = {
 			isa = PBXGroup;
 			children = (
+				A6F198211AB0A1670090FC94 /* VERSION */,
 				A6F1980D1AB01C070090FC94 /* dirhash */,
 				A6F1980C1AB01C070090FC94 /* Products */,
 			);
@@ -74,9 +76,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6F198121AB01C070090FC94 /* Build configuration list for PBXNativeTarget "dirhash" */;
 			buildPhases = (
+				A6F198231AB0A1990090FC94 /* ShellScript */,
 				A6F198071AB01C070090FC94 /* Sources */,
-				A6F198081AB01C070090FC94 /* Frameworks */,
 				A6F198091AB01C070090FC94 /* CopyFiles */,
+				A6F198081AB01C070090FC94 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -117,6 +120,24 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A6F198231AB0A1990090FC94 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/VERSION",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/version.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "echo \"#define VERSION \\\"`cat VERSION`\\\"\" > \"dirhash/version.h\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A6F198071AB01C070090FC94 /* Sources */ = {
@@ -238,6 +259,7 @@
 				A6F198141AB01C070090FC94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

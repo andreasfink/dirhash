@@ -1,5 +1,6 @@
 install_root/
 Build
+dirhash/version.h
 
 #########################
 # .gitignore file for Xcode4 and Xcode5 Source projects

@@ -17,14 +17,18 @@ BUILD_DIR=Build
 
 
 
-Build/Products/Debug/dirhash:
+Build/Products/Debug/dirhash: version.h
 	xcodebuild $(CONFOPTION)
 
+version.h:	VERSION
+	echo "#define VERSION \"`cat VERSION`\"" > version.h
+	
 clean:
 	rm -f Build
 
 install: Build/Products/Debug/dirhash
 	xcodebuild $(CONFOPTION)
+	-./check_version.sh
 	mkdir -p $(DESTDIR)/usr/local/bin
 	install -m 755 -o root -g wheel -m 755 Build/$(CONF)/dirhash $(DESTDIR)/usr/local/bin/dirhash
 
