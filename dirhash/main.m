@@ -38,6 +38,11 @@ int main(int argc, const char *argv[])
                 fprintf(stderr,"Usage: %s --output <outputfile> {PathToXCode.app} ...\n",toolname);
                 exit(0);
             }
+            if(strcmp(option,"--version")==0)
+            {
+                fprintf(stderr,"%s version %s",argv[0],VERSION);
+                exit(0);
+            }
             if(strcmp(option,"--output")==0)
             {
                 i++;
