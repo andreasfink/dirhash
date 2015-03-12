@@ -58,7 +58,7 @@
     dict[@"mode"]       = [NSNumber numberWithLongLong:(long long)filestat.st_mode];
     dict[@"nlink"]      = [NSNumber numberWithLongLong:(long long)filestat.st_nlink];
     dict[@"uid"]        = [NSNumber numberWithLongLong:(long long)filestat.st_uid];
-    dict[@"uid"]        = [NSNumber numberWithLongLong:(long long)filestat.st_uid];
+    dict[@"gid"]        = [NSNumber numberWithLongLong:(long long)filestat.st_gid];
     dict[@"rdev"]       = [NSNumber numberWithLongLong:(long long)filestat.st_rdev];
     dict[@"at_time"]    = [NSNumber numberWithLongLong:(long long)filestat.st_atimespec.tv_sec];
     dict[@"atimespec"]  = [NSNumber numberWithLongLong:(long long)filestat.st_atimespec.tv_sec];

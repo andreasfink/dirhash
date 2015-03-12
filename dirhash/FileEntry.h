@@ -21,7 +21,6 @@
 @property(readwrite,assign)     BOOL     isDirectory;
 
 - (FileEntry *)initWithRoot:(NSString *)root path:(NSString *)path;
-
 - (NSComparisonResult)caseInsensitiveCompare:(FileEntry *)other;
 - (NSDictionary *)processEntry;
 

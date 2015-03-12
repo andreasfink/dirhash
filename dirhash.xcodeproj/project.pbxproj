@@ -8,11 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		A65F20D41AB0C55500854472 /* sha512.c in Sources */ = {isa = PBXBuildFile; fileRef = A65F20D31AB0C55500854472 /* sha512.c */; };
+		A65F20DC1AB10ECA00854472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A65F20DB1AB10ECA00854472 /* main.m */; };
+		A65F20E11AB127E200854472 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A65F20E01AB127E200854472 /* libbz2.dylib */; };
 		A6F1980F1AB01C070090FC94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F1980E1AB01C070090FC94 /* main.m */; };
 		A6F198171AB01CD80090FC94 /* FileEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F198161AB01CD80090FC94 /* FileEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A65F20D71AB10ECA00854472 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		A6F198091AB01C070090FC94 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -27,6 +38,9 @@
 /* Begin PBXFileReference section */
 		A65F20D21AB0C55500854472 /* sha512.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha512.h; sourceTree = "<group>"; };
 		A65F20D31AB0C55500854472 /* sha512.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha512.c; sourceTree = "<group>"; };
+		A65F20D91AB10ECA00854472 /* dirhashdiff */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dirhashdiff; sourceTree = BUILT_PRODUCTS_DIR; };
+		A65F20DB1AB10ECA00854472 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A65F20E01AB127E200854472 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		A6F1980B1AB01C070090FC94 /* dirhash */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dirhash; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F1980E1AB01C070090FC94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6F198151AB01CD80090FC94 /* FileEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntry.h; sourceTree = "<group>"; };
@@ -35,6 +49,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A65F20D61AB10ECA00854472 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65F20E11AB127E200854472 /* libbz2.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6F198081AB01C070090FC94 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,11 +67,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A65F20DA1AB10ECA00854472 /* dirhashdiff */ = {
+			isa = PBXGroup;
+			children = (
+				A65F20DB1AB10ECA00854472 /* main.m */,
+			);
+			path = dirhashdiff;
+			sourceTree = "<group>";
+		};
 		A6F198021AB01C070090FC94 = {
 			isa = PBXGroup;
 			children = (
+				A65F20E01AB127E200854472 /* libbz2.dylib */,
 				A6F198211AB0A1670090FC94 /* VERSION */,
 				A6F1980D1AB01C070090FC94 /* dirhash */,
+				A65F20DA1AB10ECA00854472 /* dirhashdiff */,
 				A6F1980C1AB01C070090FC94 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				A6F1980B1AB01C070090FC94 /* dirhash */,
+				A65F20D91AB10ECA00854472 /* dirhashdiff */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,6 +110,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A65F20D81AB10ECA00854472 /* dirhashdiff */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A65F20DF1AB10ECA00854472 /* Build configuration list for PBXNativeTarget "dirhashdiff" */;
+			buildPhases = (
+				A65F20D51AB10ECA00854472 /* Sources */,
+				A65F20D61AB10ECA00854472 /* Frameworks */,
+				A65F20D71AB10ECA00854472 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dirhashdiff;
+			productName = dirhashdiff;
+			productReference = A65F20D91AB10ECA00854472 /* dirhashdiff */;
+			productType = "com.apple.product-type.tool";
+		};
 		A6F1980A1AB01C070090FC94 /* dirhash */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6F198121AB01C070090FC94 /* Build configuration list for PBXNativeTarget "dirhash" */;
@@ -104,6 +154,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "SMSRelay AG";
 				TargetAttributes = {
+					A65F20D81AB10ECA00854472 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					A6F1980A1AB01C070090FC94 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -122,6 +175,7 @@
 			projectRoot = "";
 			targets = (
 				A6F1980A1AB01C070090FC94 /* dirhash */,
+				A65F20D81AB10ECA00854472 /* dirhashdiff */,
 			);
 		};
 /* End PBXProject section */
@@ -145,6 +199,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A65F20D51AB10ECA00854472 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65F20DC1AB10ECA00854472 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6F198071AB01C070090FC94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,6 +220,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		A65F20DD1AB10ECA00854472 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A65F20DE1AB10ECA00854472 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		A6F198101AB01C070090FC94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -249,6 +329,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A65F20DF1AB10ECA00854472 /* Build configuration list for PBXNativeTarget "dirhashdiff" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A65F20DD1AB10ECA00854472 /* Debug */,
+				A65F20DE1AB10ECA00854472 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A6F198061AB01C070090FC94 /* Build configuration list for PBXProject "dirhash" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

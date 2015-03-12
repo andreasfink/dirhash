@@ -18,7 +18,7 @@ BUILD_DIR=Build
 
 
 Build/Products/Debug/dirhash: version.h
-	xcodebuild $(CONFOPTION)
+	xcodebuild $(CONFOPTION) -target dirhash -target dirhashdiff
 
 version.h:	VERSION
 	echo "#define VERSION \"`cat VERSION`\"" > version.h
@@ -27,16 +27,18 @@ clean:
 	rm -f Build
 
 install: Build/Products/Debug/dirhash
-	xcodebuild $(CONFOPTION)
+	xcodebuild $(CONFOPTION) -target dirhash -target dirhashdiff
 	-./check_version.sh
 	mkdir -p $(DESTDIR)/usr/local/bin
 	install -m 755 -o root -g wheel -m 755 Build/$(CONF)/dirhash $(DESTDIR)/usr/local/bin/dirhash
+	install -m 755 -o root -g wheel -m 755 Build/$(CONF)/dirhashdiff $(DESTDIR)/usr/local/bin/dirhashdiff
 
 pkg:
 	xcodebuild $(CONFOPTION)
 	if [ -d "install_root" ]; then rm -rf install_root; fi
 	mkdir -p "install_root/usr/local/bin"
 	cp Build/$(CONF)/dirhash install_root/usr/local/bin/dirhash
+	cp Build/$(CONF)/dirhashdiff install_root/usr/local/bin/dirhashdiff
 	OUTPUTFILE=
 	pkgbuild --root install_root --install-location / $(INSTALLER_SIGN) --ownership recommended --version "`cat VERSION`" --identifier $(PROJECT_ID) "$(PKGFILE)"
 
