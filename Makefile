@@ -16,18 +16,25 @@ CONFOPTION=-configuration $(CONF)
 BUILD_DIR=Build
 
 
-
 Build/Products/Debug/dirhash: version.h
-	xcodebuild $(CONFOPTION) -target dirhash -target dirhashdiff
+	xcodebuild -configuration Debug -target dirhash
+
+Build/Products/Debug/dirhashdiff: version.h
+	xcodebuild -configuration Debug -target dirhashdiff
+	
+Build/Products/Release/dirhash: version.h
+	xcodebuild -configuration Release -target dirhash
+
+Build/Products/Release/dirhashdiff: version.h
+	xcodebuild -configuration Release -target dirhashdiff
 
 version.h:	VERSION
 	echo "#define VERSION \"`cat VERSION`\"" > version.h
 	
 clean:
-	rm -f Build
+	rm -rf Build/
 
-install: Build/Products/Debug/dirhash
-	xcodebuild $(CONFOPTION) -target dirhash -target dirhashdiff
+install: Build/Products/Debug/dirhash Build/Products/Debug/dirhashdiff
 	-./check_version.sh
 	mkdir -p $(DESTDIR)/usr/local/bin
 	install -m 755 -o root -g wheel -m 755 Build/$(CONF)/dirhash $(DESTDIR)/usr/local/bin/dirhash
